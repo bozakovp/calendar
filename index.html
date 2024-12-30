@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 10px;
             padding: 0;
         }
 
@@ -30,12 +30,12 @@
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
+            gap: 2px;
             text-align: center;
         }
 
         .day, .weekday {
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ccc;
             box-sizing: border-box;
             font-size: 0.9em;
@@ -54,19 +54,23 @@
             background-color: lightcoral;
         }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            .day, .weekday {
-                font-size: 0.8em;
-                padding: 8px;
-            }
-
+        /* Mobile-Friendly Adjustments */
+        @media (max-width: 480px) {
             h1 {
                 font-size: 1.2em;
             }
 
             .month-title {
                 font-size: 1em;
+            }
+
+            .day, .weekday {
+                font-size: 0.7em;
+                padding: 5px;
+            }
+
+            .calendar {
+                gap: 1px;
             }
         }
     </style>
@@ -76,36 +80,30 @@
     <div id="calendar"></div>
 
     <script>
-        // Function to generate the calendar for 2025
         function generateCalendar() {
             const calendarContainer = document.getElementById('calendar');
             const months = [
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             ];
-            const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Days in each month for a non-leap year
+            const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
             const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-            // Determine the starting day of the year (Monday = 0)
-            let currentDayOfWeek = (new Date(2025, 0, 1).getDay() + 6) % 7; // Adjust Sunday to 6 and Monday to 0
+            let currentDayOfWeek = (new Date(2025, 0, 1).getDay() + 6) % 7; // Monday = 0
             let weekCounter = 0;
 
-            // Generate calendar for each month
             for (let month = 0; month < 12; month++) {
                 const monthDiv = document.createElement('div');
                 monthDiv.classList.add('month');
 
-                // Add month title
                 const monthTitle = document.createElement('div');
                 monthTitle.classList.add('month-title');
                 monthTitle.textContent = months[month];
                 monthDiv.appendChild(monthTitle);
 
-                // Create calendar grid for the month
                 const calendar = document.createElement('div');
                 calendar.classList.add('calendar');
 
-                // Add weekdays header
                 weekdays.forEach(weekday => {
                     const weekdayDiv = document.createElement('div');
                     weekdayDiv.classList.add('weekday');
@@ -113,20 +111,17 @@
                     calendar.appendChild(weekdayDiv);
                 });
 
-                // Add empty divs for days before the first day of the month
                 for (let i = 0; i < currentDayOfWeek; i++) {
                     const emptyDay = document.createElement('div');
                     emptyDay.classList.add('day');
                     calendar.appendChild(emptyDay);
                 }
 
-                // Add days of the month
                 for (let day = 1; day <= daysInMonth[month]; day++) {
                     const dayDiv = document.createElement('div');
                     dayDiv.classList.add('day');
                     dayDiv.textContent = day;
 
-                    // Determine week color
                     const isNewWeek = (currentDayOfWeek % 7 === 0);
                     if (isNewWeek) weekCounter++;
 
@@ -140,13 +135,11 @@
                     currentDayOfWeek = (currentDayOfWeek + 1) % 7;
                 }
 
-                // Append the calendar for the month
                 monthDiv.appendChild(calendar);
                 calendarContainer.appendChild(monthDiv);
             }
         }
 
-        // Generate the calendar for 2025 on page load
         generateCalendar();
     </script>
 </body>
