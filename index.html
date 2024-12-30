@@ -8,10 +8,12 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            padding: 0;
         }
 
         h1 {
             text-align: center;
+            font-size: 1.5em;
         }
 
         .month {
@@ -21,7 +23,7 @@
         .month-title {
             text-align: center;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 1.2em;
             margin-bottom: 10px;
         }
 
@@ -35,6 +37,8 @@
         .day, .weekday {
             padding: 10px;
             border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 0.9em;
         }
 
         .weekday {
@@ -48,6 +52,22 @@
 
         .red-week {
             background-color: lightcoral;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .day, .weekday {
+                font-size: 0.8em;
+                padding: 8px;
+            }
+
+            h1 {
+                font-size: 1.2em;
+            }
+
+            .month-title {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
