@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Calendar with Weekly Highlights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .month {
+            margin: 20px 0;
+        }
+
+        .month-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+
+        .day, .weekday {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .weekday {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .blue-week {
+            background-color: lightblue;
+        }
+
+        .red-week {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <h1>2025 Calendar with Weekly Highlights</h1>
+    <div id="calendar"></div>
+
+    <script>
+        // Function to generate the calendar for 2025
+        function generateCalendar() {
+            const calendarContainer = document.getElementById('calendar');
+            const months = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Days in each month for a non-leap year
+            const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+            // Determine the starting day of the year (Monday = 0)
+            let currentDayOfWeek = (new Date(2025, 0, 1).getDay() + 6) % 7; // Adjust Sunday to 6 and Monday to 0
+            let weekCounter = 0;
+
+            // Generate calendar for each month
+            for (let month = 0; month < 12; month++) {
+                const monthDiv = document.createElement('div');
+                monthDiv.classList.add('month');
+
+                // Add month title
+                const monthTitle = document.createElement('div');
+                monthTitle.classList.add('month-title');
+                monthTitle.textContent = months[month];
+                monthDiv.appendChild(monthTitle);
+
+                // Create calendar grid for the month
+                const calendar = document.createElement('div');
+                calendar.classList.add('calendar');
+
+                // Add weekdays header
+                weekdays.forEach(weekday => {
+                    const weekdayDiv = document.createElement('div');
+                    weekdayDiv.classList.add('weekday');
+                    weekdayDiv.textContent = weekday;
+                    calendar.appendChild(weekdayDiv);
+                });
+
+                // Add empty divs for days before the first day of the month
+                for (let i = 0; i < currentDayOfWeek; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.classList.add('day');
+                    calendar.appendChild(emptyDay);
+                }
+
+                // Add days of the month
+                for (let day = 1; day <= daysInMonth[month]; day++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.classList.add('day');
+                    dayDiv.textContent = day;
+
+                    // Determine week color
+                    const isNewWeek = (currentDayOfWeek % 7 === 0);
+                    if (isNewWeek) weekCounter++;
+
+                    if (weekCounter % 2 === 0) {
+                        dayDiv.classList.add('blue-week');
+                    } else {
+                        dayDiv.classList.add('red-week');
+                    }
+
+                    calendar.appendChild(dayDiv);
+                    currentDayOfWeek = (currentDayOfWeek + 1) % 7;
+                }
+
+                // Append the calendar for the month
+                monthDiv.appendChild(calendar);
+                calendarContainer.appendChild(monthDiv);
+            }
+        }
+
+        // Generate the calendar for 2025 on page load
+        generateCalendar();
+    </script>
+</body>
+</html>
