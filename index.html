@@ -83,17 +83,15 @@
         function generateCalendar() {
             const calendarContainer = document.getElementById('calendar');
             const months = [
-                //"January", "February", "March", "April", "May", 
-                "June","July", "August", "September", "October", "November", "December"
+                "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"
             ];
-            //const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-            const daysInMonth = [30, 31, 31, 30, 31, 30, 31];
+            const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
             const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-            let currentDayOfWeek = (new Date(2025, 0, 1).getDay() + 6) % 7; // Monday = 0
+            let currentDayOfWeek = 6; // Sunday, June 1st, 2025 => currentDayOfWeek = 6 (if Monday = 0)
             let weekCounter = 0;
 
-            for (let month = 0; month < 12; month++) {
+            for (let month = 5; month < 12; month++) { // Only June (5) to December (11)
                 const monthDiv = document.createElement('div');
                 monthDiv.classList.add('month');
 
