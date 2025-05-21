@@ -83,10 +83,11 @@
         function generateCalendar() {
             const calendarContainer = document.getElementById('calendar');
             const months = [
-                //"January", "February", "March", "April", 
-                "May", "June","July", "August", "September", "October", "November", "December"
+                //"January", "February", "March", "April", "May", 
+                "June","July", "August", "September", "October", "November", "December"
             ];
-            const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            //const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            const daysInMonth = [30, 31, 31, 30, 31, 30, 31];
             const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
             let currentDayOfWeek = (new Date(2025, 0, 1).getDay() + 6) % 7; // Monday = 0
