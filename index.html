@@ -127,12 +127,447 @@
                     if (weekCounter % 2 === 0) {
                         dayDiv.classList.add('red-week');
                     } else {
+                        day<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Calendar with Weekly Highlights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .month {
+            margin: 10px 0;
+        }
+
+        .month-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            text-align: center;
+        }
+
+        .day, .weekday {
+            padding: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 0.8em;
+        }
+
+        .weekday {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .blue-week {
+            background-color: lightblue;
+        }
+
+        .red-week {
+            background-color: lightcoral;
+        }
+
+        /* Mobile-Friendly Adjustments */
+        @media (max-width: 1000px) {
+            h1 {
+                font-size: 1em;
+            }
+
+            .month-title {
+                font-size: 1em;
+            }
+
+            .day, .weekday {
+                font-size: 0.6em;
+                padding: 2px;
+            }
+
+            .calendar {
+                gap: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>2025 Calendar with Weekly Highlights</h1>
+    <div id="calendar"></div>
+
+    <script>
+        function generateCalendar() {
+            const calendarContainer = document.getElementById('calendar');
+            const months = [
+                "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"
+            ];
+            const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+            let currentDayOfWeek = 6; // Sunday, June 1st, 2025 => currentDayOfWeek = 6 (if Monday = 0)
+            let weekCounter = 0;
+
+            for (let month = 6; month < 12; month++) { // Only June (5) to December (11)
+                const monthDiv = document.createElement('div');
+                monthDiv.classList.add('month');
+
+                const monthTitle = document.createElement('div');
+                monthTitle.classList.add('month-title');
+                monthTitle.textContent = months[month];
+                monthDiv.appendChild(monthTitle);
+
+                const calendar = document.createElement('div');
+                calendar.classList.add('calendar');
+
+                weekdays.forEach(weekday => {
+                    const weekdayDiv = document.createElement('div');
+                    weekdayDiv.classList.add('weekday');
+                    weekdayDiv.textContent = weekday;
+                    calendar.appendChild(weekdayDiv);
+                });
+
+                for (let i = 0; i < currentDayOfWeek; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.classList.add('day');
+                    calendar.appendChild(emptyDay);
+                }
+
+                for (let day = 1; day <= daysInMonth[month]; day++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.classList.add('day');
+                    dayDiv.textContent = day;
+
+                    const isNewWeek = (currentDayOfWeek % 7 === 0);
+                    if (isNewWeek) weekCounter++;
+
+                    if (weekCounter % 2 === 0) {
+                        dayDiv.classList.add('red-week');
+                    } else {
                         dayDiv.classList.add('blue-week');
                     }
 
                     calendar.appendChild(dayDiv);
                     currentDayOfWeek = (currentDayOfWeek + 1) % 7;
                 }
+
+                monthDiv.appendChild(calendar);
+                calendarContainer.appendChild(monthDiv);
+            }
+        }
+
+        generateCalendar();
+    </script>
+</body>
+</html>
+Div.classList.add('blue-week');
+                    }
+
+                    calendar.appendChild(dayDiv);
+                    currentDayOfWeek = (currentDayOfWeek + 1) % 7;
+                }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Calendar with Weekly Highlights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .month {
+            margin: 10px 0;
+        }
+
+        .month-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            text-align: center;
+        }
+
+        .day, .weekday {
+            padding: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 0.8em;
+        }
+
+        .weekday {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .blue-week {
+            background-color: lightblue;
+        }
+
+        .red-week {
+            background-color: lightcoral;
+        }
+
+        /* Mobile-Friendly Adjustments */
+        @media (max-width: 1000px) {
+            h1 {
+                font-size: 1em;
+            }
+
+            .month-title {
+                font-size: 1em;
+            }
+
+            .day, .weekday {
+                font-size: 0.6em;
+                padding: 2px;
+            }
+
+            .calendar {
+                gap: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>2025 Calendar with Weekly Highlights</h1>
+    <div id="calendar"></div>
+
+    <script>
+        function generateCalendar() {
+            const calendarContainer = document.getElementById('calendar');
+            const months = [
+                "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"
+            ];
+            const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+            let currentDayOfWeek = 6; // Sunday, June 1st, 2025 => currentDayOfWeek = 6 (if Monday = 0)
+            let weekCounter = 0;
+
+            for (let month = 6; month < 12; month++) { // Only June (5) to December (11)
+                const monthDiv = document.createElement('div');
+                monthDiv.classList.add('month');
+
+                const monthTitle = document.createElement('div');
+                monthTitle.classList.add('month-title');
+                monthTitle.textContent = months[month];
+                monthDiv.appendChild(monthTitle);
+
+                const calendar = document.createElement('div');
+                calendar.classList.add('calendar');
+
+                weekdays.forEach(weekday => {
+                    const weekdayDiv = document.createElement('div');
+                    weekdayDiv.classList.add('weekday');
+                    weekdayDiv.textContent = weekday;
+                    calendar.appendChild(weekdayDiv);
+                });
+
+                for (let i = 0; i < currentDayOfWeek; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.classList.add('day');
+                    calendar.appendChild(emptyDay);
+                }
+
+                for (let day = 1; day <= daysInMonth[month]; day++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.classList.add('day');
+                    dayDiv.textContent = day;
+
+                    const isNewWeek = (currentDayOfWeek % 7 === 0);
+                    if (isNewWeek) weekCounter++;
+
+                    if (weekCounter % 2 === 0) {
+                        dayDiv.classList.add('red-week');
+                    } else {
+                        day<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Calendar with Weekly Highlights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .month {
+            margin: 10px 0;
+        }
+
+        .month-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            text-align: center;
+        }
+
+        .day, .weekday {
+            padding: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 0.8em;
+        }
+
+        .weekday {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .blue-week {
+            background-color: lightblue;
+        }
+
+        .red-week {
+            background-color: lightcoral;
+        }
+
+        /* Mobile-Friendly Adjustments */
+        @media (max-width: 1000px) {
+            h1 {
+                font-size: 1em;
+            }
+
+            .month-title {
+                font-size: 1em;
+            }
+
+            .day, .weekday {
+                font-size: 0.6em;
+                padding: 2px;
+            }
+
+            .calendar {
+                gap: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>2025 Calendar with Weekly Highlights</h1>
+    <div id="calendar"></div>
+
+    <script>
+        function generateCalendar() {
+            const calendarContainer = document.getElementById('calendar');
+            const months = [
+                "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"
+            ];
+            const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+            let currentDayOfWeek = 1; // Sunday, June 1st, 2025 => currentDayOfWeek = 6 (if Monday = 0)
+            let weekCounter = 0;
+
+            for (let month = 6; month < 12; month++) { // Only June (5) to December (11)
+                const monthDiv = document.createElement('div');
+                monthDiv.classList.add('month');
+
+                const monthTitle = document.createElement('div');
+                monthTitle.classList.add('month-title');
+                monthTitle.textContent = months[month];
+                monthDiv.appendChild(monthTitle);
+
+                const calendar = document.createElement('div');
+                calendar.classList.add('calendar');
+
+                weekdays.forEach(weekday => {
+                    const weekdayDiv = document.createElement('div');
+                    weekdayDiv.classList.add('weekday');
+                    weekdayDiv.textContent = weekday;
+                    calendar.appendChild(weekdayDiv);
+                });
+
+                for (let i = 0; i < currentDayOfWeek; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.classList.add('day');
+                    calendar.appendChild(emptyDay);
+                }
+
+                for (let day = 1; day <= daysInMonth[month]; day++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.classList.add('day');
+                    dayDiv.textContent = day;
+
+                    const isNewWeek = (currentDayOfWeek % 7 === 0);
+                    if (isNewWeek) weekCounter++;
+
+                    if (weekCounter % 2 === 0) {
+                        dayDiv.classList.add('red-week');
+                    } else {
+                        dayDiv.classList.add('blue-week');
+                    }
+
+                    calendar.appendChild(dayDiv);
+                    currentDayOfWeek = (currentDayOfWeek + 1) % 7;
+                }
+
+                monthDiv.appendChild(calendar);
+                calendarContainer.appendChild(monthDiv);
+            }
+        }
+
+        generateCalendar();
+    </script>
+</body>
+</html>
+Div.classList.add('blue-week');
+                    }
+
+                    calendar.appendChild(dayDiv);
+                    currentDayOfWeek = (currentDayOfWeek + 1) % 7;
+                }
+
+                monthDiv.appendChild(calendar);
+                calendarContainer.appendChild(monthDiv);
+            }
+        }
+
+        generateCalendar();
+    </script>
+</body>
+</html>
 
                 monthDiv.appendChild(calendar);
                 calendarContainer.appendChild(monthDiv);
